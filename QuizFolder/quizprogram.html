@@ -1,0 +1,107 @@
+<html>
+<link rel = "stylesheet" href = "quiz.css">
+  <head>
+     <title>Quiz Program</title>
+     <script>
+      var score = 0;
+      var questionCount = 0;
+      var MyQuestion;
+      var MyAnswer;
+        var message = "";
+    // Define all Questions and Answers
+      var Question1 = " What is the color of the Apple ? (type Answer here in lower-case) :";
+      var Question2 = "What is the color of the Grapes ? (Type Answer here in lower-case) :";
+      var Question3 = "What is the color of the Bananna ? Type Answer here in lower-case :";
+      var Answer1 = "red";
+      var Answer2 = "green";
+      var Answer3 = "yellow";
+
+      function OnLoad()
+      {
+        MyQuestion = document.getElementById("question");
+        MyQuestion.textContent = Question1;
+        document.getElementById("question").style.display= 'visible';
+
+      }
+      function gradeQuiz()
+      {
+        if(questionCount == 0)
+        {
+          MyAnswer =  document.getElementById("answer").value;
+        //alert(MyAnswer);
+            if(MyAnswer == "red")
+            {
+            //alert("1st Answer Correct");
+            score = score + 10;
+            }
+            questionCount = questionCount + 1;
+            document.getElementById("answer").value = "";
+            MyQuestion = document.getElementById("question");
+            MyQuestion.textContent = Question2;
+            document.getElementById("question").style.display= 'visible';
+        }else if(questionCount == 1)
+        {
+          MyAnswer =  document.getElementById("answer").value;
+        //alert(MyAnswer);
+            if(MyAnswer == "orange")
+            {
+            //alert("2nd Answer Correct");
+            score = score + 10;
+            }
+            questionCount = questionCount + 1;
+            document.getElementById("answer").value = "";
+            MyQuestion = document.getElementById("question");
+            MyQuestion.textContent = Question3;
+            document.getElementById("question").style.display= 'visible';
+        } else if(questionCount == 2)
+        {
+          MyAnswer =  document.getElementById("answer").value;
+        //alert(MyAnswer);
+            if(MyAnswer == "yellow")
+            {
+            //alert("3rd Answer Correct");
+            score = score + 10;
+            }
+            questionCount = questionCount + 1;
+            document.getElementById("answer").value = "";
+            end();
+        }
+         //check if the user anwer is equal to something
+           //add one to score if it is correct
+           //score = score + 1;
+          //add one questionCount to advance to the next question
+          if( questionCount == 3) {end();}
+      }
+       function end()
+       {
+             if( questionCount == 3)
+             {
+               //Hide And Reveal Some Stuff
+//alert ("I am in function end();")
+               document.getElementById("question").style.display="none";
+               document.getElementById("answer").style.display="none";
+               document.getElementById("enter").style.display="none";
+               message = "Your Score is " + score
+               + "<br> The correct answer to the first question is - " + Answer1
+               + "<br> The correct answer to the second question is - " + Answer2
+               + "<br> The correct answer to the first question is - " + Answer3;
+               document.getElementById("output").innerHTML = message;
+             }
+       }
+     </script>
+  </head>
+<body>
+  <!--// Fun Quiz should appear in Geroiza  RED Color-->
+    <h2>Fruit Colors - Fun Quiz By Mihir!</h2>
+    <img src="basket.png" alt= "basket" class= "center" id = "basket">
+    <br>
+    <span id = "question"></span>
+  <body onload="OnLoad()">
+    <input type = "text" id = "answer">
+    <input type = "button" id="enter" value = "Submit Answer" onclick = "gradeQuiz()">
+     <!--Hide or Reveal Stuff???-->
+     <br>
+     <span id="output"> </span><!--hidden at beginning maybe??-->
+     <!--<h3 id = "output"></h3>-->
+  </body>
+</html>
